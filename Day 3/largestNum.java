@@ -1,0 +1,28 @@
+package day3;
+
+public class largestNum {
+
+	
+
+	    // Method to find the largest of three numbers
+	    static int max(int a, int b, int c) {
+	        if (a >= b && a >= c) {
+	            return a;
+	        } 
+	        else if (b >= a && b >= c) {
+	            return b;
+	        } 
+	        else {
+	            return c;
+	        }
+	    }
+
+	    public static void main(String[] args) {
+
+	        int result = max(12, 45, 30);
+
+	        System.out.println("Largest number = " + result);
+	    }
+	}
+
+
