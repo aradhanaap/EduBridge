@@ -1,4 +1,5 @@
 package day3;
+//factorial table
 
 public class Factorial_table{
 	    static int factorial(int n) {
