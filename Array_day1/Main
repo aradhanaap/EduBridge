@@ -1,0 +1,30 @@
+public class Main {
+    public static void main(String[] args) {
+
+        int[] marks = {78, 92, 65, 88, 71, 95, 59};
+
+        int sum = 0;
+        int max = marks[0];
+        int min = marks[0];
+
+        // One loop
+        for (int i = 0; i < marks.length; i++) {
+            sum += marks[i];
+
+            if (marks[i] > max) {
+                max = marks[i];
+            }
+
+            if (marks[i] < min) {
+                min = marks[i];
+            }
+        }
+
+        double average = (double) sum / marks.length;
+
+        System.out.println("Sum = " + sum);
+        System.out.printf("Average = %.2f%n", average);
+        System.out.println("Max = " + max);
+        System.out.println("Min = " + min);
+    }
+}
