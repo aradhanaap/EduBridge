@@ -1,0 +1,48 @@
+import java.util.ArrayDeque;
+
+class TwoStackQueue {
+
+    private ArrayDeque<Character> in = new ArrayDeque<>();
+    private ArrayDeque<Character> out = new ArrayDeque<>();
+
+    // Enqueue: push into in stack
+    public void enqueue(char value) {
+        in.push(value);
+        System.out.println("Enqueued: " + value);
+    }
+
+    // Dequeue: move elements from in to out when out is empty
+    public char dequeue() {
+
+        if (out.isEmpty()) {
+            while (!in.isEmpty()) {
+                out.push(in.pop());
+            }
+        }
+
+        return out.pop();
+    }
+}
+
+public class QueueUsingTwoStacks {
+    public static void main(String[] args) {
+
+        TwoStackQueue q = new TwoStackQueue();
+
+        // Enqueue A, B, C
+        q.enqueue('A');
+        q.enqueue('B');
+        q.enqueue('C');
+
+        // Dequeue one
+        System.out.println("Dequeued: " + q.dequeue());
+
+        // Enqueue D
+        q.enqueue('D');
+
+        // Dequeue the rest
+        System.out.println("Dequeued: " + q.dequeue());
+        System.out.println("Dequeued: " + q.dequeue());
+        System.out.println("Dequeued: " + q.dequeue());
+    }
+}
