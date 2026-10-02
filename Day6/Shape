@@ -1,0 +1,52 @@
+abstract class Shape {
+
+    // Abstract method
+    abstract double area();
+
+    // Concrete method
+    void print() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double area() {
+        return length * width;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Circle c = new Circle(5);
+        Rectangle r = new Rectangle(10, 4);
+
+        c.print();
+        System.out.println("Circle Area: " + c.area());
+
+        r.print();
+        System.out.println("Rectangle Area: " + r.area());
+    }
+}
