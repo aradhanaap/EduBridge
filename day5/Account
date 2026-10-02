@@ -1,0 +1,65 @@
+class Account {
+    String holder;
+    protected double balance;
+
+    Account(String holder, double balance) {
+        this.holder = holder;
+        this.balance = balance;
+    }
+
+    void displayBalance() {
+        System.out.println("Holder: " + holder);
+        System.out.println("Balance: Rs." + balance);
+    }
+}
+
+class SavingsAccount extends Account {
+
+    SavingsAccount(String holder, double balance) {
+        super(holder, balance);
+    }
+
+    void addInterest(double rate) {
+        double interest = balance * rate / 100;
+        balance = balance + interest;
+
+        System.out.println("Interest added: Rs." + interest);
+        System.out.println("New Balance: Rs." + balance);
+    }
+}
+
+class CurrentAccount extends Account {
+    private final double overdraftLimit = 5000;
+
+    CurrentAccount(String holder, double balance) {
+        super(holder, balance);
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance + overdraftLimit) {
+            balance = balance - amount;
+            System.out.println("Withdrawn: Rs." + amount);
+            System.out.println("Remaining Balance: Rs." + balance);
+        } else {
+            System.out.println("Withdrawal failed: Overdraft limit exceeded.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Savings Account
+        SavingsAccount savings = new SavingsAccount("Aradhana", 10000);
+        savings.displayBalance();
+        savings.addInterest(5);
+
+        System.out.println();
+
+        // Current Account
+        CurrentAccount current = new CurrentAccount("Rahul", 3000);
+        current.displayBalance();
+        current.withdraw(7000);
+        current.withdraw(2000);
+    }
+}
