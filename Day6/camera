@@ -1,0 +1,35 @@
+interface Camera {
+    void takePhoto();
+}
+
+interface GPS {
+    void getLocation();
+}
+
+class SmartPhone implements Camera, GPS {
+
+    @Override
+    public void takePhoto() {
+        System.out.println("SmartPhone is taking a photo.");
+    }
+
+    @Override
+    public void getLocation() {
+        System.out.println("SmartPhone location: Bengaluru");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        SmartPhone phone = new SmartPhone();
+
+        // Using SmartPhone through Camera interface
+        Camera camera = phone;
+        camera.takePhoto();
+
+        // Using SmartPhone through GPS interface
+        GPS gps = phone;
+        gps.getLocation();
+    }
+}
