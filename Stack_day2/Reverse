@@ -1,0 +1,86 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+
+    Node head;
+
+    // Insert at the end
+    public void insertEnd(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        Node cur = head;
+
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+
+        cur.next = newNode;
+    }
+
+    // Reverse the linked list
+    public Node reverse(Node head) {
+
+        Node prev = null;
+        Node cur = head;
+
+        while (cur != null) {
+
+            Node next = cur.next; // Save next node
+            cur.next = prev;      // Reverse the link
+            prev = cur;           // Move prev forward
+            cur = next;           // Move cur forward
+        }
+
+        return prev;
+    }
+
+    // Display the linked list
+    public void display(Node head) {
+
+        Node cur = head;
+
+        while (cur != null) {
+            System.out.print(cur.data + " -> ");
+            cur = cur.next;
+        }
+
+        System.out.println("null");
+    }
+}
+
+public class ReverseLinkedList {
+
+    public static void main(String[] args) {
+
+        LinkedList list = new LinkedList();
+
+        // Create: 1 -> 2 -> 3 -> 4 -> 5
+        list.insertEnd(1);
+        list.insertEnd(2);
+        list.insertEnd(3);
+        list.insertEnd(4);
+        list.insertEnd(5);
+
+        System.out.print("Original list: ");
+        list.display(list.head);
+
+        // Reverse the list
+        list.head = list.reverse(list.head);
+
+        System.out.print("Reversed list: ");
+        list.display(list.head);
+    }
+}
