@@ -1,0 +1,37 @@
+class Person {
+    String name;
+
+    void displayName() {
+        System.out.println("Name: " + name);
+    }
+}
+
+class Employee extends Person {
+    double salary;
+
+    void displaySalary() {
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class Manager extends Employee {
+    int teamSize;
+
+    void displayTeamSize() {
+        System.out.println("Team Size: " + teamSize);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager m = new Manager();
+
+        m.name = "Aradhana";
+        m.salary = 50000;
+        m.teamSize = 10;
+
+        m.displayName();
+        m.displaySalary();
+        m.displayTeamSize();
+    }
+}
