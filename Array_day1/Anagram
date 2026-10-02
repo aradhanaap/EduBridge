@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+public class AnagramCheck {
+
+    public static boolean isAnagram(String a, String b) {
+
+        // Ignore case
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+
+        // Convert strings to character arrays
+        char[] arr1 = a.toCharArray();
+        char[] arr2 = b.toCharArray();
+
+        // Sort both arrays
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        // Compare sorted arrays
+        return Arrays.equals(arr1, arr2);
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("Listen / Silent: " +
+                isAnagram("Listen", "Silent"));
+
+        System.out.println("Hello / World: " +
+                isAnagram("Hello", "World"));
+    }
+}
