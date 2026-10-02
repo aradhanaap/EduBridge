@@ -1,0 +1,61 @@
+abstract class Notification {
+    String recipient;
+
+    Notification(String recipient) {
+        this.recipient = recipient;
+    }
+
+    // Abstract method
+    abstract void send();
+}
+
+interface Schedulable {
+    void schedule(String time);
+}
+
+class EmailNotification extends Notification implements Schedulable {
+
+    EmailNotification(String recipient) {
+        super(recipient);
+    }
+
+    @Override
+    void send() {
+        System.out.println("Sending Email to: " + recipient);
+    }
+
+    @Override
+    public void schedule(String time) {
+        System.out.println("Email scheduled at: " + time);
+    }
+}
+
+class SmsNotification extends Notification {
+
+    SmsNotification(String recipient) {
+        super(recipient);
+    }
+
+    @Override
+    void send() {
+        System.out.println("Sending SMS to: " + recipient);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        EmailNotification email =
+                new EmailNotification("abc@gmail.com");
+
+        SmsNotification sms =
+                new SmsNotification("9876543210");
+
+        email.send();
+        email.schedule("10:00 AM");
+
+        System.out.println();
+
+        sms.send();
+    }
+}
