@@ -1,0 +1,46 @@
+class Product {
+    private String name;
+    private double price;
+
+    // Constructor
+    Product(String name, double price) {
+        this.name = name;
+        setPrice(price);
+    }
+
+    // Getter for name
+    String getName() {
+        return name;
+    }
+
+    // Getter for price
+    double getPrice() {
+        return price;
+    }
+
+    // Setter for name
+    void setName(String name) {
+        this.name = name;
+    }
+
+    // Setter for price
+    void setPrice(double price) {
+        if (price < 0) {
+            System.out.println("Error: Price cannot be negative.");
+        } else {
+            this.price = price;
+        }
+    }
+
+    public static void main(String[] args) {
+        Product p = new Product("Laptop", 50000);
+
+        System.out.println("Product Name: " + p.getName());
+        System.out.println("Price: " + p.getPrice());
+
+        // Trying to set a negative price
+        p.setPrice(-1000);
+
+        System.out.println("Price after update: " + p.getPrice());
+    }
+}
