@@ -1,0 +1,60 @@
+abstract class Employee {
+    String name;
+
+    Employee(String name) {
+        this.name = name;
+    }
+
+    // Abstract method
+    abstract double calculatePay();
+
+    // Concrete method
+    void printSlip() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Pay: Rs." + calculatePay());
+    }
+}
+
+class FullTime extends Employee {
+    double monthlySalary;
+
+    FullTime(String name, double monthlySalary) {
+        super(name);
+        this.monthlySalary = monthlySalary;
+    }
+
+    @Override
+    double calculatePay() {
+        return monthlySalary;
+    }
+}
+
+class PartTime extends Employee {
+    int hours;
+    double rate;
+
+    PartTime(String name, int hours, double rate) {
+        super(name);
+        this.hours = hours;
+        this.rate = rate;
+    }
+
+    @Override
+    double calculatePay() {
+        return hours * rate;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        FullTime f = new FullTime("Aradhana", 50000);
+        PartTime p = new PartTime("Rahul", 40, 500);
+
+        f.printSlip();
+
+        System.out.println();
+
+        p.printSlip();
+    }
+}
