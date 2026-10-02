@@ -1,0 +1,36 @@
+class Employee {
+    private double salary;
+
+    Employee(double salary) {
+        this.salary = salary;
+    }
+
+    // Getter for salary
+    public double getSalary() {
+        return salary;
+    }
+}
+
+class Manager extends Employee {
+    private double bonus;
+
+    Manager(double salary, double bonus) {
+        super(salary);
+        this.bonus = bonus;
+    }
+
+    // Calculate total pay using the getter
+    public double getTotalPay() {
+        return getSalary() + bonus;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager m = new Manager(50000, 10000);
+
+        System.out.println("Salary: Rs." + m.getSalary());
+        System.out.println("Bonus: Rs." + 10000);
+        System.out.println("Total Pay: Rs." + m.getTotalPay());
+    }
+}
