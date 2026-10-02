@@ -1,0 +1,58 @@
+interface Vehicle {
+    void wheels();
+
+ 
+    default void honk() {
+        System.out.println("Vehicle horn: Beep Beep");
+    }
+
+    // Static method
+    static void info() {
+        System.out.println("Vehicle is a mode of transportation.");
+    }
+}
+
+class Car implements Vehicle {
+
+    @Override
+    public void wheels() {
+        System.out.println("Car has 4 wheels.");
+    }
+
+    // Override honk() in Car only
+    @Override
+    public void honk() {
+        System.out.println("Car horn: Honk Honk");
+    }
+}
+
+class Bike implements Vehicle {
+
+    @Override
+    public void wheels() {
+        System.out.println("Bike has 2 wheels.");
+    }
+
+    // No honk() override, so default method is used
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Car car = new Car();
+        Bike bike = new Bike();
+
+        car.wheels();
+        car.honk();
+
+        System.out.println();
+
+        bike.wheels();
+        bike.honk();
+
+        System.out.println();
+
+        // Calling static method using interface name
+        Vehicle.info();
+    }
+}
