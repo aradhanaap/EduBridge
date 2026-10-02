@@ -1,0 +1,28 @@
+public class MoveZeros {
+    public static void main(String[] args) {
+
+        int[] a = {0, 5, 0, 3, 12, 0, 7};
+
+        int index = 0;
+
+        // Move non-zero elements to the front
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != 0) {
+                a[index] = a[i];
+                index++;
+            }
+        }
+
+        // Fill the remaining positions with zeros
+        while (index < a.length) {
+            a[index] = 0;
+            index++;
+        }
+
+        // Print the result
+        System.out.print("Array after moving zeros: ");
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+    }
+}
